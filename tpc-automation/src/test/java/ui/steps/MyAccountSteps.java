@@ -1,17 +1,14 @@
 package ui.steps;
 
-import ui.helpers.TestContext;
 import io.cucumber.java.en.Then;
-import ui.pages.HeaderMenuPage;
+import ui.helpers.TestContext;
 
 import static org.testng.Assert.assertEquals;
 
-public class MyAccountSteps {
-    private TestContext testContext;
-    private HeaderMenuPage headerMenuPage;
+public class MyAccountSteps extends BaseSteps {
 
     public MyAccountSteps(TestContext testContext) {
-        this.testContext = testContext;
+        super(testContext);
         headerMenuPage = testContext.pageObjectManager.getHeaderMenuPage();
     }
 

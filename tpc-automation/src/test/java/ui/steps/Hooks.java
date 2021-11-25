@@ -7,11 +7,10 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-public class Hooks {
-    private TestContext testContext;
+public class Hooks extends BaseSteps {
 
     public Hooks(TestContext testContext) {
-        this.testContext = testContext;
+        super(testContext);
     }
 
     @Before("@UI")

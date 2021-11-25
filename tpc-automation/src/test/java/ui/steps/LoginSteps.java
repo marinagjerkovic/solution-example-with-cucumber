@@ -1,21 +1,17 @@
 package ui.steps;
 
-import ui.helpers.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import ui.pages.AuthenticationPage;
-import ui.pages.MyAccountPage;
+import ui.helpers.TestContext;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
-public class LoginSteps {
-    private TestContext testContext;
-    private AuthenticationPage authenticationPage;
-    private MyAccountPage myAccountPage;
+public class LoginSteps extends BaseSteps {
 
     public LoginSteps(TestContext testContext) {
-        this.testContext = testContext;
+        super(testContext);
         authenticationPage = testContext.pageObjectManager.getAuthenticationPage();
         myAccountPage = testContext.pageObjectManager.getMyAccountPage();
     }
