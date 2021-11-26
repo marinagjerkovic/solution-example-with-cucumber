@@ -27,8 +27,8 @@ public class LoginSteps extends BaseSteps {
         authenticationPage.login(email, password);
     }
 
-    @Then("user is navigated to my account page")
-    public void user_is_navigated_to_my_account_page() {
+    @Then("user should be navigated to my account page")
+    public void user_should_be_navigated_to_my_account_page() {
         assertTrue(myAccountPage.getMyAccountLabel().isDisplayed());
     }
 

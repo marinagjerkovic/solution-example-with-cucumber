@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverFactory {
     public static WebDriver createWebDriver() {
-        String browser = "chrome"; // System.getProperty("browser");
+        String browser = System.getProperty("browser"); // "chrome"
         switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();

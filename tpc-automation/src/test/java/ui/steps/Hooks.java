@@ -1,11 +1,11 @@
 package ui.steps;
 
-import ui.helpers.TestContext;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import ui.helpers.TestContext;
 
 public class Hooks extends BaseSteps {
 
