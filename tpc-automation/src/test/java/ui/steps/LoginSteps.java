@@ -1,8 +1,10 @@
 package ui.steps;
 
+import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import ui.helpers.Links;
 import ui.helpers.TestContext;
 
 import static org.testng.Assert.assertEquals;
@@ -18,7 +20,7 @@ public class LoginSteps extends BaseSteps {
 
     @Given("user is on authentication page")
     public void user_is_on_authentication_page() {
-        testContext.driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
+        testContext.driver.get(Links.authenticationPage);
         assertTrue(authenticationPage.waitUntilElementShown(authenticationPage.getEmailFieldLogin()));
     }
 

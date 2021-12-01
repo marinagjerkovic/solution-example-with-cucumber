@@ -2,10 +2,25 @@
 Feature: Login
   # This is example of a login feature file
 
-  Background: User is on authentication page
+  Background:
     Given user is on authentication page
 
-  Scenario Outline: Check that my account page is shown when login is successful
+  Scenario: Password required message is shown when password field is empty
+    And user logs in with email "marina@marina.com" and password ""
+    Then first error message is shown with text "Password is required."
+
+  Scenario Outline: Email required message is shown when email field is empty
+    When user logs in with email <email> and password <password>
+    Then first error message is shown with text "An email address required."
+
+    Examples:
+      | email  | password  |
+      | ""     | ""        |
+      | ""     | "test"    |
+      | ""     | "test123" |
+      | "    " | "test123" |
+
+  Scenario Outline: My account page is shown when login is successful
     When user logs in with email <email> and password <password>
     Then user should be navigated to my account page
 
@@ -15,7 +30,7 @@ Feature: Login
       | "   petric@petric.com   " | "test111"       |
       | "marina@marina.com"       | "   test111   " |
 
-  Scenario Outline: Check that authentication failed message is shown
+  Scenario Outline: Authentication failed message is shown
   when user is not registered with given email
   or when password is incorrect for given email
 
@@ -27,7 +42,7 @@ Feature: Login
       | "notregisteredemail@test.com" | "test111"            |
       | "marina@marina.com"           | "incorrect_password" |
 
-  Scenario Outline: Check that invalid email message is shown when email has incorrect format
+  Scenario Outline: Invalid email message is shown when email has incorrect format
     When user logs in with email <email> and password <password>
     Then first error message is shown with text "Invalid email address."
 
@@ -37,18 +52,7 @@ Feature: Login
       | "marina@marina" | "test"    |
       | "marina@marina" | "test111" |
 
-  Scenario Outline: Check that email required message is shown when email field is empty
-    When user logs in with email <email> and password <password>
-    Then first error message is shown with text "An email address required."
-
-    Examples:
-      | email  | password  |
-      | ""     | ""        |
-      | ""     | "test"    |
-      | ""     | "test123" |
-      | "    " | "test123" |
-
-  Scenario Outline: Check that invalid password message is shown when password has invalid format
+  Scenario Outline: Invalid password message is shown when password has invalid format
     When user logs in with email <email> and password <password>
     Then first error message is shown with text "Invalid password."
 
@@ -56,9 +60,4 @@ Feature: Login
       | email                         | password |
       | "marina@marina.com"           | "1234"   |
       | "notregisteredemail@test.com" | "1234"   |
-
-  @Tag
-  Scenario: Check that password required message is shown when password field is empty
-    When user logs in with email "marina@marina.com" and password ""
-    Then first error message is shown with text "Password is required."
 

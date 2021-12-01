@@ -14,7 +14,6 @@ public class TestContext {
         driver = WebDriverFactory.createWebDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         pageObjectManager = new PageObjectManager(driver, wait);
     }

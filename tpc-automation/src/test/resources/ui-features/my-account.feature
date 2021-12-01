@@ -6,6 +6,7 @@ Feature: My account
     When user logs in with email "marina@marina.com" and password "test111"
     Then user should be navigated to my account page
 
+  @Tag
   Scenario: Check that users's name and lastname are shown in header menu
     Then user's name "Marina" and lastname "Petrovic" are shown in header
 

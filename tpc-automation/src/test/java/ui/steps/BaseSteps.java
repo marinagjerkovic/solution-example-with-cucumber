@@ -5,7 +5,7 @@ import ui.pages.AuthenticationPage;
 import ui.pages.HeaderMenuPage;
 import ui.pages.MyAccountPage;
 
-public class BaseSteps {
+public abstract class BaseSteps {
     TestContext testContext;
 
     AuthenticationPage authenticationPage;
