@@ -1,5 +1,6 @@
 package ui.steps;
 
+import org.openqa.selenium.WebDriver;
 import ui.helpers.TestContext;
 import ui.pages.AuthenticationPage;
 import ui.pages.HeaderMenuPage;

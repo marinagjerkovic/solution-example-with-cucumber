@@ -22,4 +22,12 @@ public class BasePage {
             return false;
         }
     }
+
+    public void clickElement(WebElement element) {
+        element.click();
+    }
+
+    public void enterText(WebElement element, String text) {
+        element.sendKeys(text);
+    }
 }

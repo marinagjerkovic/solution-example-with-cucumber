@@ -10,8 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class WebDriverFactory {
+    private static String browser = System.getProperty("browser");
+
     public static void setupDriver() {
-        String browser = System.getProperty("browser");
         if (browser == null) browser = "chrome";
         switch (browser) {
             case "edge":
@@ -24,7 +25,7 @@ public class WebDriverFactory {
     }
 
     public static WebDriver createWebDriver() {
-        String browser = System.getProperty("browser");
+        if (browser == null) browser = "chrome";
         switch (browser) {
             case "edge":
                 return new EdgeDriver();

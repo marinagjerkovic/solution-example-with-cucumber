@@ -16,8 +16,4 @@ public class HeaderMenuPage extends BasePage {
 
     @FindBy(css = "#header > div.nav > div > div > nav > div:nth-child(1) > a")
     WebElement myAccountButton;
-
-    public void click_myAccountButton() {
-        myAccountButton.click();
-    }
 }

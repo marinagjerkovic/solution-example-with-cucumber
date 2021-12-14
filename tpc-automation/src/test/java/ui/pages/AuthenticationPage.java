@@ -36,30 +36,10 @@ public class AuthenticationPage extends BasePage {
     @FindBy(css = "#center_column > div.alert.alert-danger > ol > li")
     WebElement firstErrorMessage;
 
-    public void enter_emailCreateAccount(String text) {
-        emailFieldCreateAccount.sendKeys(text);
-    }
-
-    public void click_createAccountButton() {
-        createAccountButton.click();
-    }
-
-    public void enter_emailLogin(String text) {
-        emailFieldLogin.sendKeys(text);
-    }
-
-    public void enter_passwordLogin(String text) {
-        passwordFieldLogin.sendKeys(text);
-    }
-
-    public void click_loginButton() {
-        loginButton.click();
-    }
-
     public void login(String email, String password) {
-        enter_emailLogin(email);
-        enter_passwordLogin(password);
-        click_loginButton();
+        enterText(emailFieldLogin, email);
+        enterText(passwordFieldLogin, password);
+        clickElement(loginButton);
     }
 
 }
