@@ -26,17 +26,18 @@ public class LoginSteps extends BaseSteps {
 
     @When("user logs in with email {string} and password {string}")
     public void user_logs_in_with_email_and_password(String email, String password) {
+
         authenticationPage.login(email, password);
     }
 
     @Then("user should be navigated to my account page")
     public void user_should_be_navigated_to_my_account_page() {
-        assertTrue(myAccountPage.getMyAccountLabel().isDisplayed());
+        assertTrue(myAccountPage.isElementDisplayed(myAccountPage.getMyAccountLabel()));
     }
 
     @Then("first error message is shown with text {string}")
     public void first_error_message_is_shown_with_text(String text) {
-        assertTrue(authenticationPage.getFirstErrorMessage().isDisplayed());
+        assertTrue(authenticationPage.isElementDisplayed(authenticationPage.getFirstErrorMessage()));
         assertEquals(authenticationPage.getFirstErrorMessage().getText(), text);
     }
 }

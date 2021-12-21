@@ -23,11 +23,30 @@ public class BasePage {
         }
     }
 
-    public void clickElement(WebElement element) {
-        element.click();
+    public boolean clickElement(WebElement element) {
+        try {
+            element.click();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public void enterText(WebElement element, String text) {
-        element.sendKeys(text);
+    public boolean enterText(WebElement element, String text) {
+        try {
+            element.sendKeys(text);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementDisplayed(WebElement element) {
+        boolean isDisplayed = false;
+        try {
+            isDisplayed = element.isDisplayed();
+        } catch (Exception e) {
+        }
+        return isDisplayed;
     }
 }
