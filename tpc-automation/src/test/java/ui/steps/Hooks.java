@@ -1,40 +1,43 @@
 package ui.steps;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import ui.helpers.TestContext;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ui.helpers.PageObjectManager;
+import ui.helpers.SharedData;
 import ui.helpers.WebDriverFactory;
 
-public class Hooks extends BaseSteps {
+import java.time.Duration;
 
-    public Hooks(TestContext testContext) {
-        super(testContext);
-    }
+public class Hooks {
 
     @BeforeAll
     public static void setupDriver() {
         WebDriverFactory.setupDriver();
     }
 
-    // no need to do anything in before method because testState object is already instantiated by PicoContainer
-    // and it implicitly instantiated driver, wait and pageObjectManager
-//    @Before("@UI")
-//    public void setup() {
-//
-//    }
+    @Before("@UI")
+    public void setup() {
+        SharedData.driver = WebDriverFactory.createWebDriver();
+        SharedData.wait = new WebDriverWait(SharedData.driver, Duration.ofSeconds(10));
+        SharedData.driver.manage().window().maximize();
+
+        SharedData.pageObjectManager = new PageObjectManager(SharedData.driver, SharedData.wait);
+    }
 
     @After("@UI")
     public void teardown(Scenario scenario) {
-        if (testContext.driver != null) {
+        if (SharedData.driver != null) {
             if (scenario.isFailed()) {
-                byte[] screenshot = ((TakesScreenshot) testContext.driver).getScreenshotAs(OutputType.BYTES);
+                byte[] screenshot = ((TakesScreenshot) SharedData.driver).getScreenshotAs(OutputType.BYTES);
                 scenario.attach(screenshot, "image/png", scenario.getName());
             }
 
-            testContext.driver.quit();
+            SharedData.driver.quit();
         }
     }
 }

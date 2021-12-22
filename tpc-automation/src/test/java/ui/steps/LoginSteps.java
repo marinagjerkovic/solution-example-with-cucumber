@@ -1,26 +1,24 @@
 package ui.steps;
 
-import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import ui.helpers.Links;
-import ui.helpers.TestContext;
+import ui.helpers.SharedData;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginSteps extends BaseSteps {
 
-    public LoginSteps(TestContext testContext) {
-        super(testContext);
-        authenticationPage = testContext.pageObjectManager.getAuthenticationPage();
-        myAccountPage = testContext.pageObjectManager.getMyAccountPage();
+    public LoginSteps() {
+        authenticationPage = SharedData.pageObjectManager.getAuthenticationPage();
+        myAccountPage = SharedData.pageObjectManager.getMyAccountPage();
     }
 
     @Given("user is on authentication page")
     public void user_is_on_authentication_page() {
-        testContext.driver.get(Links.authenticationPage);
+        SharedData.driver.get(Links.authenticationPage);
         assertTrue(authenticationPage.waitUntilElementShown(authenticationPage.getEmailFieldLogin()));
     }
 

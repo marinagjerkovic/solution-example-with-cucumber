@@ -1,15 +1,14 @@
 package ui.steps;
 
 import io.cucumber.java.en.Then;
-import ui.helpers.TestContext;
+import ui.helpers.SharedData;
 
 import static org.testng.Assert.assertEquals;
 
 public class MyAccountSteps extends BaseSteps {
 
-    public MyAccountSteps(TestContext testContext) {
-        super(testContext);
-        headerMenuPage = testContext.pageObjectManager.getHeaderMenuPage();
+    public MyAccountSteps() {
+        headerMenuPage = SharedData.pageObjectManager.getHeaderMenuPage();
     }
 
     @Then("user\'s name {string} and lastname {string} are shown in header")
@@ -19,6 +18,6 @@ public class MyAccountSteps extends BaseSteps {
 
     @Then("page title has text {string}")
     public void page_title_has_text(String text) {
-        assertEquals(testContext.driver.getTitle(), text);
+        assertEquals(SharedData.driver.getTitle(), text);
     }
 }
