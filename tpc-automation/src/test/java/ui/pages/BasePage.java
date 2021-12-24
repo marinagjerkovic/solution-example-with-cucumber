@@ -42,11 +42,11 @@ public class BasePage {
     }
 
     public boolean isElementDisplayed(WebElement element) {
-        boolean isDisplayed = false;
         try {
-            isDisplayed = element.isDisplayed();
+            boolean isDisplayed = element.isDisplayed();
+            return isDisplayed;
         } catch (Exception e) {
+            return false;
         }
-        return isDisplayed;
     }
 }
